@@ -1,5 +1,6 @@
 import React, {useState} from "react"
 import './App.css';
+import Axios from "axios";
 
 function App() {
   const [values, setValues] = useState();
@@ -8,11 +9,19 @@ function App() {
     setValues(prevValue=>({
       ...prevValue,
       [value.target.name]: value.target.value,
-    }))
+    }));
   };
 
-  const handleClickButton = () =>{
-    console.log(values)
+  //erros aqui
+  const handleClickButton = () => {
+    Axios.post("http://localhost:3001/register", {
+      usuario: values.Usuario,
+      login: values.Login,
+      senha: values.Senha,
+
+    }).then((response) => {
+      console.log(response);
+    });
   }
 
   return( 
