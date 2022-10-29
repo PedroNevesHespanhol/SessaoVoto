@@ -15,11 +15,25 @@ app.use(express.json());
 
 //erros aqui
 app.post("/register", (req, res) => {
-    const { usuario } = req.body;
-    const { login } = req.body;
-    const { senha } = req.body;
+    const { Usuario } = req.body;
+    const { Login } = req.body;
+    const { Senha } = req.body;
 
-    console.log(usuario);
+    let SQL = "INSERT INTO politico ( Usuario, Login, Senha ) VALUES ( ?,?,? )";
+
+    db.query(SQL, [Usuario, Login, Senha], (err, result) => {
+        console.log(err);
+    })
+});
+
+app.get("/getSessoes", (req, res) => {
+
+    let SQL = "SELECT * from sessao";
+
+    db.query(SQL, (err, result) => {
+        if (err) console.log (err);
+        else res.send(result);
+    });
 });
 
 app.listen(3001, ()=> {
