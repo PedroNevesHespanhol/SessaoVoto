@@ -1,2 +1,19 @@
-@import "../../style/color_variables_module.scss";
+.sessao--container{
+    width: 600px;
+    background-color: rgb(249, 247, 247);
+    border: 1px solid black;
+    border-radius: 3px;
+    margin: 10px;
+    padding: 5px;
+}
+
+.sessao--primeira{
+    width: 30px;
+    margin: 3px 5px 2px 2px;
+}
+
+.sessao--segunda{
+    width: 30px;
+    margin: 3px 5px 2px 2px;
+}
 

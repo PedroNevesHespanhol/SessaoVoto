@@ -1,7 +1,7 @@
 import React, { useState, useEffect} from "react";
 import './style/App.css';
 import Axios from "axios";
-import Sessao from "./components/sessoes/sessao";
+import Sessao from "./pages/sessao/sessao";
 
 function App() {
   const [values, setValues] = useState();
@@ -14,7 +14,7 @@ function App() {
     }));
   };
 
-  //erros aqui
+  
   const handleClickButton = () => {
     Axios.post("http://localhost:3001/register", {
       Usuario: values.Usuario,

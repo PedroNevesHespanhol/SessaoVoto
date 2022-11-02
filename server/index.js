@@ -13,7 +13,7 @@ const db = mysql.createPool({
 app.use(cors());
 app.use(express.json());
 
-//erros aqui
+
 app.post("/register", (req, res) => {
     const { Usuario } = req.body;
     const { Login } = req.body;
@@ -22,6 +22,26 @@ app.post("/register", (req, res) => {
     let SQL = "INSERT INTO politico ( Usuario, Login, Senha ) VALUES ( ?,?,? )";
 
     db.query(SQL, [Usuario, Login, Senha], (err, result) => {
+        console.log(err);
+    })
+});
+
+app.post("/sim", (req, res) => {
+    const { QTD_VOTOS_POS } = req.body;
+
+    let SQL = "INSERT INTO sessao ( QTD_VOTOS_POS ) VALUES ( 1 )";
+
+    db.query(SQL, [QTD_VOTOS_POS], (err, result) => {
+        console.log(err);
+    })
+});
+
+app.post("/nao", (req, res) => {
+    const { QTD_VOTOS_NEG } = req.body;
+
+    let SQL = "INSERT INTO sessao ( QTD_VOTOS_NEG ) VALUES ( ? )";
+
+    db.query(SQL, [QTD_VOTOS_NEG], (err, result) => {
         console.log(err);
     })
 });
