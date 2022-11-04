@@ -26,22 +26,23 @@ app.post("/register", (req, res) => {
     })
 });
 
+//parei aqui
 app.post("/sim", (req, res) => {
-    const { QTD_VOTOS_POS } = req.body;
+    const { ESCOLHA, ESTADO, ID_POLITICO, ID_SESSAO, ID } = req.body;
 
-    let SQL = "INSERT INTO sessao ( QTD_VOTOS_POS ) VALUES ( 1 )";
+    let SQL = "INSERT INTO voto ( ESCOLHA, ESTADO, ID_POLITICO, ID_SESSAO, ID ) VALUES ( ?, ?, ?, ?, ? )";
 
-    db.query(SQL, [QTD_VOTOS_POS], (err, result) => {
+    db.query(SQL, [ESCOLHA, ESTADO, ID_POLITICO, ID_SESSAO, ID], (err, result) => {
         console.log(err);
     })
 });
 
 app.post("/nao", (req, res) => {
-    const { QTD_VOTOS_NEG } = req.body;
+    const { ESCOLHA, ESTADO, ID_POLITICO, ID_SESSAO, ID } = req.body;
 
-    let SQL = "INSERT INTO sessao ( QTD_VOTOS_NEG ) VALUES ( ? )";
+    let SQL = "INSERT INTO voto ( ESCOLHA, ESTADO, ID_POLITICO, ID_SESSAO, ID ) VALUES ( ?, ?, ?, ?, ? )";
 
-    db.query(SQL, [QTD_VOTOS_NEG], (err, result) => {
+    db.query(SQL, [ESCOLHA, ESTADO, ID_POLITICO, ID_SESSAO, ID], (err, result) => {
         console.log(err);
     })
 });

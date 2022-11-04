@@ -3,19 +3,27 @@ import '../../style/sessao.style.css';
 import Axios from "axios";
 
 export default function Sessao(props) {
-    const [values, setValues] = useState();
-
+    const [values] = useState();
+    //parei aqui
     const votoSim = () => {
-        Axios.update("http://localhost:3001/sim", {
-            QTD_VOTOS_POS: values.QTD_VOTOS_POS
+        Axios.post("http://localhost:3001/sim", {
+          ESCOLHA: values.ESCOLHA,
+          ESTADO: values.ESTADO,
+          ID_POLITICO: values.ID_POLITICO,
+          ID_SESSAO: values.ID_SESSAO,
+          ID: values.ID
     
         }).then((response) => {
           console.log(response);
         });
       }
       const votoNao = () => {
-        Axios.update("http://localhost:3001/nao", {
-            QTD_VOTOS_NEG: values.QTD_VOTOS_NEG
+        Axios.post("http://localhost:3001/nao", {
+            ESCOLHA: values.ESCOLHA,
+            ESTADO: values.ESTADO,
+            ID_POLITICO: values.ID_POLITICO,
+            ID_SESSAO: values.ID_SESSAO,
+            ID: values.ID
     
         }).then((response) => {
           console.log(response);
