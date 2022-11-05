@@ -26,23 +26,34 @@ app.post("/register", (req, res) => {
     })
 });
 
-//parei aqui
-app.post("/sim", (req, res) => {
-    const { ESCOLHA, ESTADO, ID_POLITICO, ID_SESSAO, ID } = req.body;
+app.post("/session", (req, res) => {
+    const { NOME } = req.body;
+    const { DESCRICAO } = req.body;
+    const { ESTADO } = req.body;
+    const { DATA_INICIAL } = req.body;
+    const { DATA_FINAL } = req.body;
 
-    let SQL = "INSERT INTO voto ( ESCOLHA, ESTADO, ID_POLITICO, ID_SESSAO, ID ) VALUES ( ?, ?, ?, ?, ? )";
+    let SQL = "INSERT INTO sessao ( NOME, DESCRICAO, ESTADO, DATA_INICIAL, DATA_FINAL ) VALUES ( ?,?,?,?,? )";
 
-    db.query(SQL, [ESCOLHA, ESTADO, ID_POLITICO, ID_SESSAO, ID], (err, result) => {
+    db.query(SQL, [NOME, DESCRICAO, ESTADO, DATA_INICIAL, DATA_FINAL], (err, result) => {
         console.log(err);
     })
 });
 
-app.post("/nao", (req, res) => {
-    const { ESCOLHA, ESTADO, ID_POLITICO, ID_SESSAO, ID } = req.body;
+app.post("/votoSim", (req, res) => {
 
-    let SQL = "INSERT INTO voto ( ESCOLHA, ESTADO, ID_POLITICO, ID_SESSAO, ID ) VALUES ( ?, ?, ?, ?, ? )";
+    let SQL = "INSERT INTO voto ( ESCOLHA ) VALUES ( 'Sim' )";
 
-    db.query(SQL, [ESCOLHA, ESTADO, ID_POLITICO, ID_SESSAO, ID], (err, result) => {
+    db.query(SQL, (err, result) => {
+        console.log(err);
+    })
+});
+
+app.post("/votoNao", (req, res) => {
+
+    let SQL = "INSERT INTO voto ( ESCOLHA ) VALUES ( 'Não' )";
+
+    db.query(SQL, (err, result) => {
         console.log(err);
     })
 });
@@ -55,6 +66,34 @@ app.get("/getSessoes", (req, res) => {
         if (err) console.log (err);
         else res.send(result);
     });
+});
+
+app.put("/edit", (req, res) => {
+    const { ID } = req.body;
+    const { NOME } = req.body;
+    const { DESCRICAO } = req.body;
+    const { ESTADO } = req.body;
+    let SQL = "UPDATE sessao SET NOME = ?, DESCRICAO = ?, ESTADO = ? WHERE ID = ?";
+    db.query(SQL, [NOME, DESCRICAO, ESTADO, ID], (err, result) => {
+      if (err) {
+        res.send(err);
+      } else {
+        res.send(result);
+      }
+    });
+  });
+
+//verificarDelete
+app.delete("/delete/:id", (req, res) => {
+const { ID } = req.params;
+let SQL = "DELETE FROM sessao WHERE ID = ?";
+db.query(SQL, [ID], (err, result) => {
+    if (err) {
+    console.log(err);
+    } else {
+    res.send(result);
+    }
+});
 });
 
 app.listen(3001, ()=> {
