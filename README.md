@@ -1,6 +1,6 @@
 <h1>Sessão de Votação</h1>
 
-<p>Projeto da faculdade que baseia-se em fazer uma sessão de votação de projetos de lei.</p>
+<p>Projeto da faculdade que baseia-se em fazer uma sessão de votação de projetos de lei para o aprendizado de criação de um CRUD simples.</p>
 
 <img src="sessaoVoto.png" width="100%">
 
