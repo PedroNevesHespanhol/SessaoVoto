@@ -83,17 +83,13 @@ app.put("/edit", (req, res) => {
     });
   });
 
-//verificarDelete
-app.delete("/delete/:id", (req, res) => {
-const { ID } = req.params;
-let SQL = "DELETE FROM sessao WHERE ID = ?";
-db.query(SQL, [ID], (err, result) => {
-    if (err) {
-    console.log(err);
-    } else {
-    res.send(result);
-    }
-});
+app.delete("/delete/:ID", (req, res) => {
+    const {ID} = req.params;
+    let SQL = "DELETE FROM sessao WHERE ID = ?";
+    db.query(SQL, [ID], (err, result) => {
+        if (err) console.log(err);
+        else res.send(result);
+    });
 });
 
 app.listen(3001, ()=> {

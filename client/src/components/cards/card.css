@@ -7,6 +7,10 @@
     padding: 5px;
 }
 
+.sessao--nome{
+    text-align: center;
+}
+
 .sessao--primeira{
     width: 30px;
     margin: 3px 5px 2px 2px;
@@ -14,6 +18,11 @@
 
 .sessao--segunda{
     width: 30px;
+    margin: 3px 5px 2px 2px;
+}
+
+.sessao--edit{
+    width: 45px;
     margin: 3px 5px 2px 2px;
 }
 

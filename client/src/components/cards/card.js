@@ -1,11 +1,11 @@
-import React, { useState} from 'react';
+import React from 'react';
 import './card.css';
 import FormDialog from '../dialog/dialog'
 import Axios from "axios";
 
 export default function Sessao(props) {
     const [open, setOpen] = React.useState(false);
-    const [values] = useState();
+    //const [values] = useState();
 
     const handleClickSessao = () => {
         setOpen(true);
@@ -40,9 +40,10 @@ export default function Sessao(props) {
       <div className="sessao--container">
         <h1 className="sessao--nome">{props.name}</h1>
         <p className="sessao--descricao">{props.descricao}</p>
+        <p className="sessao--estado">Estado: {props.estado}</p>
         <button className="sessao--primeira" onClick={() => handleClickVotoSim()}>{props.primeira}</button>
         <button className="sessao--segunda" onClick={() => handleClickVotoNao()}>{props.segunda}</button>
-        <p className="sessao--estado">Estado: {props.estado}</p>
+        <br></br>
         <button className="sessao--edit" onClick={() => handleClickSessao()}>Editar</button>
       </div>
       </>

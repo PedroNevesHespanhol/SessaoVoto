@@ -48,7 +48,7 @@ function App() {
   return( 
     <div className="app--container">
       <div className="register--container">
-        <h1 class="register--title">Cadastro</h1>
+        <h1 class="register--title">Político</h1>
         <input type="text" name="Usuario" 
         placeholder="Usuário"
         className="register--input"
