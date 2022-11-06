@@ -2,6 +2,8 @@
 
 <p>Projeto da faculdade que baseia-se em fazer uma sessão de votação de projetos de lei.</p>
 
+<img src="sessaoVoto.png" width="100%">
+
 <p>Linguagens utilizadas:</p>
 
 <div style="display: inline_block"><br>
